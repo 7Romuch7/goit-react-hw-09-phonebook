@@ -1,0 +1,18 @@
+.appear {
+    transform: translateY(-100%);
+}
+
+.appearActive {
+    transform: translateY(0);
+    transition: transform 500ms linear;
+}
+
+.title {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 48px;
+    letter-spacing: 2px;
+    margin: 0;
+    margin-bottom: 5px;
+    color: darkblue;
+    text-align: center;
+}

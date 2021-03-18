@@ -1,0 +1,53 @@
+.containerFilter {
+  padding: 5px;
+  margin: 15px 15px 20px 15px;
+  box-shadow: 0 1px 5px rgb(218, 253, 89);
+  border-radius: 5px;
+  background-color: #fff;
+}
+
+.titleFilter {
+    display: flex;
+    flex-direction: column;
+}
+
+.inputFilter {
+    padding: 15px;
+    height: 25px;
+    font-size: 20px;
+    margin-top: 5px;
+    border: 1px solid  rgb(211, 210, 210);
+    border-radius: 5px;
+}
+
+.inputFilter:focus {
+    box-shadow: 0 0 5px 3px rgb(110, 206, 250);
+    border: none;
+    outline: none;
+}
+
+.titleFilter {
+    font-family: sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.enter {
+  transform: translateY(-100%);
+  opacity: 0.1;
+}
+.enterActive {
+  transform: translateY(0);
+  opacity: 1;
+  transition: all 250ms ease-in;
+}
+
+.exit {
+  transform: translateY(0);
+  opacity: 1;
+}
+.exitActive {
+  transform: translateY(-100%);
+  opacity: 0.1;
+  transition: all 250ms ease-in;
+}

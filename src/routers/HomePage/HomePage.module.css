@@ -1,0 +1,22 @@
+.homePage {
+   width: 100%;
+   min-height: 600px;
+   margin-top: 5px;
+   background: url('../../image/phoneLondon.jpg') no-repeat;
+   background-size: cover;
+   background-position: center;
+}
+
+.titleHomePage {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   padding-top: 20px;
+   margin: 0;
+   font-family: 'Akaya Telivigala', cursive;
+   font-size: 70px;
+   font-weight: 700;
+   letter-spacing: 5px;
+   color: rgb(7, 0, 10);
+   text-transform: uppercase;
+}

@@ -1,0 +1,45 @@
+.listContacts {
+    padding: 0;
+}
+
+.enter {
+    opacity: 0;
+    transform: scale(0.1);
+}
+
+.enterActive {
+    opacity: 1;
+    transform: scale(1);
+    transition: all 250ms linear;
+}
+
+.exit {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.exitActive {
+    opacity: 0;
+    transform: scale(0.1);
+    transition: all 250ms linear;
+}
+
+.contactsFilter-enter {
+  transform: translateY(-100%);
+  opacity: 0.1;
+}
+.contactsFilter-enterActive {
+  transform: translateY(0);
+  opacity: 1;
+  transition: all 250ms ease-in;
+}
+
+.contactsFilter-exit {
+  transform: translateY(0);
+  opacity: 1;
+}
+.contactsFilter-exitActive {
+  transform: translateY(-100%);
+  opacity: 0.1;
+  transition: all 250ms ease-in;
+}

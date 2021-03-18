@@ -1,0 +1,23 @@
+.authNav {
+    position: absolute;
+    top: 26px;
+    right: 24%;
+    padding-right: 20px;
+}
+
+.autLink {
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-decoration: none;
+    color: rgba(10, 13, 173);
+}
+
+.autLink:hover, .autLink:focus {
+    color: rgb(96, 156, 233);
+}
+
+.autLink + .autLink {
+    margin-left: 15px;
+}
