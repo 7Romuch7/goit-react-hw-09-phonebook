@@ -1,5 +1,5 @@
-import { Component } from 'react';
-import { connect } from "react-redux";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import Title from '../../components/Title';
 import ContactForm from '../../components/ContactForm';
 import ContactList from '../../components/ContactList';
@@ -8,31 +8,22 @@ import Loader from '../../components/Loader';
 import { phonebookOperations, phonebookSelectors } from '../../redux/phonebook';
 import styles from './ContactRouter.module.css';
 
-class ContactRouter extends Component {
+export default function ContactRouter() {
 
-  componentDidMount() {
-    this.props.fetchContact();
-  }
+  const isLoadingContacts = useSelector(phonebookSelectors.getLoading);
+  
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(phonebookOperations.fetchContact());
+  }, [dispatch]);
 
-  render() {
     return (
       <div className={styles.wrapperPhonebook} >
         <Title title='Phonebook'/>
         <ContactForm />
         <Filter />
-        {this.props.isLoadingContacts && <Loader/>}
+        {isLoadingContacts && <Loader/>}
         <ContactList />
      </div>
     )
-  }
 }
-
-const mapStateToProps = state => ({
-  isLoadingContacts: phonebookSelectors.getLoading(state)
-})
-
-const mapDispatchToProps = dispatch => ({
-fetchContact: () => dispatch(phonebookOperations.fetchContact())
-})
-
-export default connect( mapStateToProps, mapDispatchToProps )(ContactRouter);

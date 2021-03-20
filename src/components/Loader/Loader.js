@@ -1,10 +1,9 @@
-import { Component } from 'react';
 import Loader from "react-loader-spinner";
 import styles from './Loader.module.css';
 
-export default class Loaders extends Component {
-  render() {
-      return (<div className={styles.containerLoader}>
+export default function Loaders () {
+  return (
+    <div className={styles.containerLoader}>
         <Loader
             type="ThreeDots"
             color="#00BFFF"
@@ -14,5 +13,4 @@ export default class Loaders extends Component {
         />
       </div>  
     );
-  }
 }

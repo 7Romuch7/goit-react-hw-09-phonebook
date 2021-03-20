@@ -16,6 +16,7 @@ const getVisibleContacts = createSelector([getAllContacts, getFilter], (contacts
 const selectorsPhonebook = {
   getLoading,
   getFilter,
+  getAllContacts,
   getVisibleContacts,
   getError
 }

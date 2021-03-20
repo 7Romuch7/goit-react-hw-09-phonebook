@@ -6,7 +6,7 @@ const HomePage = () => (
         <div className={styles.homePage}>
             <h1 className={styles.titleHomePage}>Phonebook</h1>
         </div>
-        <Footer/>
+        <Footer title='© Phonebook Company 2021'/>
     </>
 )
 

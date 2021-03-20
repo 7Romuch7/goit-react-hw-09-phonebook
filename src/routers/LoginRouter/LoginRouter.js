@@ -1,43 +1,62 @@
-import { Component } from "react";
-import { connect } from "react-redux";
+import { useState, useCallback } from "react";
+import { useDispatch } from "react-redux";
 import { authOperations } from '../../redux/auth';
 import { toast } from 'react-toastify';
 import Title from '../../components/Title';
 import 'react-toastify/dist/ReactToastify.css';
 import styles from './LoginRouter.module.css';
 
-class LoginRouter extends Component {
-    state = {
-        email: '',
-        password: '',
+export default function LoginRouter () {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
+    const dispatch = useDispatch();
+    const onLogin = useCallback(() =>
+      dispatch(authOperations.login({email, password})),
+    [email, password, dispatch],
+  );
+
+    const handleChange = event => {
+        const { name, value } = event.target;
+
+        switch (name) {
+
+            case 'email':
+                setEmail(value);
+                break;
+      
+            case 'password':
+                setPassword(value);
+                break;
+      
+            default:
+                return;
+        }
     }
 
-    handleChange = ({ target: { name, value } }) => {
-        this.setState({ [name]: value });
-    }
-
-    handleSubmit = event => {
+    const handleSubmit = event => {
         event.preventDefault();
-        const { email, password } = this.state;
-         if (email === '') { toast.error('Enter email!'); }
-        else {
-            if (password.length < 8) { toast.error('Wrong password!'); }
-            else {
-                this.props.onLogin(this.state);
 
-                this.setState({ email: '', password: '' });
+        if (email === '') { toast.error('Enter email!'); }
+            else {
+                if (password.length < 8) { toast.error('Wrong password!'); }
+            else {
+                    onLogin(email, password);
+                    clear();
             };
-        };
+        }
     };
 
-render() {
-    const { email, password } = this.state;
+    const clear = () => {
+        setEmail('');
+        setPassword('');
+    };
 
     return (
         <div className={styles.loginPage}>
             <Title title='Login'/>
             <form className={styles.formLogin}
-                onSubmit={this.handleSubmit}
+                onSubmit={handleSubmit}
                 autoComplete="off"  
             >
                 <label className={styles.labelLogin}>
@@ -47,7 +66,7 @@ render() {
                         name="email"
                         placeholder="Enter email"
                         value={email}
-                        onChange={this.handleChange}
+                        onChange={handleChange}
                     />
                 </label>
 
@@ -58,21 +77,16 @@ render() {
                         name="password"
                         placeholder="Enter password"
                         value={password}
-                        onChange={this.handleChange}
+                        onChange={handleChange}
                     />
                 </label>
 
-                {/* <button className={styles.btnLogin} type="submit">Login</button> */}
-                {this.state.email && this.state.password > 0
-                    ? <button className={styles.btnLogin} type="submit">Login</button>
-                    : <button disabled className={styles.btnLogin} type="submit">Login</button>}
+                <button
+                    disabled={!email && password < 1}
+                    className={styles.btnLogin} 
+                    type="submit">
+                        Login
+                </button>
             </form>
         </div>
-    )}
-}
-
-const mapDispatchToProps = {
-    onLogin: authOperations.login,
-}
-
-export default connect(null, mapDispatchToProps) (LoginRouter);
+)}
